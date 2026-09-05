@@ -35,3 +35,16 @@ Thumbs.db
 # Optional
 *.tgz
 *.tar.gz
+
+# Command Code
+.commandcode/
+
+# Scratchpad
+scratchpad/
+
+# Plans
+.commandcode/plans/
+
+# Temporary files
+*.tmp
+*.temp
