@@ -7,7 +7,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
 
-const SYSTEM_PROMPT = `You are ProjectForge, an AI-powered project mentor for final-year students.
+const SYSTEM_PROMPT = `You are IdeateX, an AI-powered project mentor for final-year students.
 
 Your role is to generate practical, development-ready project ideas based on student profiles.
 

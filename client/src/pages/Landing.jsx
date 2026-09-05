@@ -85,7 +85,7 @@ export default function Landing() {
               From uncertainty<br />to actionable plan.
             </h2>
             <p className="text-zinc-400 max-w-md">
-              ProjectForge evaluates feasibility, suggests tech stacks, 
+              IdeateX evaluates feasibility, suggests tech stacks, 
               identifies AI opportunities, and checks for similar projects.
             </p>
           </div>
@@ -101,7 +101,7 @@ export default function Landing() {
       {/* Footer */}
       <footer className="px-6 py-8 border-t border-zinc-800">
         <div className="max-w-5xl mx-auto flex justify-between items-center">
-          <span className="text-xs text-zinc-500 tracking-wider uppercase">ProjectForge</span>
+          <span className="text-xs text-zinc-500 tracking-wider uppercase">IdeateX</span>
           <span className="text-xs text-zinc-600">AI-Powered Project Mentor</span>
         </div>
       </footer>

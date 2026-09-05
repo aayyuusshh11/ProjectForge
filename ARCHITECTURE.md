@@ -2,7 +2,7 @@
 
 ## System Overview
 
-ProjectForge uses a client-server architecture with React frontend and Express backend.
+IdeateX (formerly ProjectForge) uses a client-server architecture with React frontend and Express backend.
 
 ## Folder Structure
 
@@ -35,7 +35,7 @@ ProjectForge/
 ## Data Flow
 
 ```
-Student Input → React Frontend → Express Backend → OpenAI API
+Student Input → React Frontend → Express Backend → Gemini API (or Rule-based)
                                     ↓
                               Curated Knowledge
                                     ↓

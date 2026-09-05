@@ -1,4 +1,4 @@
-# ProjectForge Deployment Guide
+# IdeateX Deployment Guide
 
 ## Architecture
 - **Frontend**: Vercel (React + Vite)
@@ -23,12 +23,12 @@
    ```
    NODE_ENV=production
    CLIENT_URL=https://your-app.vercel.app
-   OPENAI_API_KEY=sk-your-key-here
+   GEMINI_API_KEY=your-gemini-key-here
    ```
 6. Railway will auto-deploy
 
 ### Step 3: Get Backend URL
-- Copy the generated URL (e.g., `https://projectforge-backend.up.railway.app`)
+- Copy the generated URL (e.g., `https://ideatex-backend.up.railway.app`)
 - Test: `https://your-url/api/health`
 
 ---
@@ -70,7 +70,7 @@
 ```
 NODE_ENV=production
 CLIENT_URL=https://your-app.vercel.app
-OPENAI_API_KEY=sk-your-key
+GEMINI_API_KEY=your-gemini-key
 ```
 
 ### Vercel (Frontend)
@@ -97,7 +97,7 @@ VITE_API_URL=https://your-backend.railway.app
 
 ### API Not Working
 - Check Railway logs for errors
-- Verify `OPENAI_API_KEY` is set correctly
+- Verify `GEMINI_API_KEY` is set correctly
 - Test health endpoint: `/api/health`
 
 ### Build Fails

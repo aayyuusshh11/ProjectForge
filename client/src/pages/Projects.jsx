@@ -1,62 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Clock, Gauge, ChevronRight, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Clock, Gauge, ChevronRight, AlertCircle, Zap } from 'lucide-react';
 import { generateProjects } from '../services/api';
-
-// Fallback demo data for when API is unavailable
-const FALLBACK_PROJECTS = [
-  {
-    id: 'proj-demo-001',
-    title: 'Smart Patient Monitoring System',
-    description: 'An AI-powered dashboard that monitors patient vitals in real-time, alerts healthcare staff to anomalies, and provides predictive health insights using machine learning.',
-    problemStatement: 'Hospitals struggle with continuous patient monitoring, leading to delayed responses to critical health changes.',
-    difficulty: 'Advanced',
-    fitScore: 87,
-    estimatedTime: '14 weeks',
-    technologies: ['React', 'Node.js', 'Python', 'MongoDB', 'TensorFlow'],
-    targetUsers: 'Hospitals, clinics, elderly care facilities',
-    coreFeatures: ['Real-time vitals dashboard', 'Anomaly detection', 'Alert system', 'Patient history'],
-    advancedFeatures: ['Predictive analytics', 'ML-based risk scoring', 'Integration with wearables'],
-    whyItFits: 'Matches your React and Python skills with healthcare interest.',
-    innovation: 'Combines real-time monitoring with predictive ML models.'
-  },
-  {
-    id: 'proj-demo-002',
-    title: 'AI Study Companion',
-    description: 'A personalized learning platform that adapts to student behavior, generates practice questions, and provides intelligent study recommendations based on performance patterns.',
-    problemStatement: 'Students lack personalized study tools that adapt to their learning pace and knowledge gaps.',
-    difficulty: 'Intermediate',
-    fitScore: 92,
-    estimatedTime: '12 weeks',
-    technologies: ['React', 'Python', 'FastAPI', 'PostgreSQL', 'OpenAI'],
-    targetUsers: 'University students, online learners',
-    coreFeatures: ['Adaptive quizzes', 'Progress tracking', 'Study recommendations', 'Performance analytics'],
-    advancedFeatures: ['AI-generated study notes', 'Spaced repetition', 'Learning style detection'],
-    whyItFits: 'Perfect for your React and Python skills with AI interest.',
-    innovation: 'Uses LLMs to generate personalized study content.'
-  },
-  {
-    id: 'proj-demo-003',
-    title: 'Smart Campus Navigation',
-    description: 'An indoor navigation system for university campuses using BLE beacons and machine learning to provide real-time directions and occupancy information.',
-    problemStatement: 'New students and visitors struggle to navigate large university campuses efficiently.',
-    difficulty: 'Advanced',
-    fitScore: 78,
-    estimatedTime: '16 weeks',
-    technologies: ['React Native', 'Node.js', 'Python', 'Firebase', 'BLE'],
-    targetUsers: 'University students, faculty, visitors',
-    coreFeatures: ['Indoor navigation', 'Room finder', 'Campus map', 'Event locations'],
-    advancedFeatures: ['Crowd density tracking', 'Accessibility routes', 'AR navigation overlay'],
-    whyItFits: 'Combines your web skills with emerging BLE technology.',
-    innovation: 'Indoor positioning without GPS using BLE beacons.'
-  }
-];
+import { generateRuleBasedProjects } from '../services/ruleBasedGenerator';
 
 export default function Projects() {
   const navigate = useNavigate();
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [usingFallback, setUsingFallback] = useState(false);
+  const [usingRuleBased, setUsingRuleBased] = useState(false);
+  const [aiRequestActive, setAiRequestActive] = useState(true);
 
   useEffect(() => {
     const storedProfile = sessionStorage.getItem('studentProfile');
@@ -72,20 +25,36 @@ export default function Projects() {
   async function fetchProjects(profile) {
     try {
       setLoading(true);
-      setUsingFallback(false);
+      setAiRequestActive(true);
+      setUsingRuleBased(false);
+      
       const response = await generateProjects(profile);
-      if (response.success) {
+      
+      if (response.success && !usingRuleBased) {
         setProjects(response.projects);
-      } else {
-        setProjects(FALLBACK_PROJECTS);
-        setUsingFallback(true);
+        setUsingRuleBased(false);
+      } else if (!usingRuleBased) {
+        setProjects(generateRuleBasedProjects(profile));
+        setUsingRuleBased(true);
       }
     } catch (err) {
-      setProjects(FALLBACK_PROJECTS);
-      setUsingFallback(true);
+      if (!usingRuleBased) {
+        const profile = JSON.parse(sessionStorage.getItem('studentProfile') || '{}');
+        setProjects(generateRuleBasedProjects(profile));
+        setUsingRuleBased(true);
+      }
     } finally {
       setLoading(false);
+      setAiRequestActive(false);
     }
+  }
+
+  function handleQuickView() {
+    const profile = JSON.parse(sessionStorage.getItem('studentProfile') || '{}');
+    setProjects(generateRuleBasedProjects(profile));
+    setUsingRuleBased(true);
+    setLoading(false);
+    setAiRequestActive(false);
   }
 
   const getDifficultyColor = (difficulty) => {
@@ -100,10 +69,18 @@ export default function Projects() {
   if (loading) {
     return (
       <div className="min-h-screen bg-zinc-900 text-white pt-24 flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-8 h-8 border-2 border-zinc-600 border-t-emerald-400 rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-sm text-zinc-400 tracking-wider">Generating your projects...</p>
-          <p className="text-xs text-zinc-600 mt-2">This may take 10-20 seconds</p>
+        <div className="text-center max-w-md mx-auto px-6">
+          <div className="w-10 h-10 border-2 border-zinc-600 border-t-emerald-400 rounded-full animate-spin mx-auto mb-6" />
+          <p className="text-lg text-zinc-300 tracking-wider mb-2">Generating your projects...</p>
+          <p className="text-sm text-zinc-500 mb-6">AI is analyzing your profile and creating personalized recommendations</p>
+          
+          <button
+            onClick={handleQuickView}
+            className="inline-flex items-center gap-1.5 px-4 py-2 border border-zinc-700 text-zinc-400 hover:text-zinc-300 hover:border-zinc-600 transition-all duration-200 text-xs tracking-wide"
+          >
+            <Zap className="w-3 h-3" />
+            View results instantly
+          </button>
         </div>
       </div>
     );
@@ -127,17 +104,23 @@ export default function Projects() {
           </span>
           <h1 className="text-4xl font-bold tracking-tight mb-4">Your Projects</h1>
           
-          {usingFallback && (
-            <div className="flex items-center gap-2 mb-4 px-4 py-3 border border-yellow-500/30 bg-yellow-500/10 rounded">
-              <AlertCircle className="w-4 h-4 text-yellow-400 flex-shrink-0" />
-              <span className="text-xs text-yellow-300">Using demo data - Add OpenAI credits for AI-generated projects</span>
+          {usingRuleBased && (
+            <div className="flex items-center gap-3 mb-6 px-5 py-4 border border-yellow-500/30 bg-yellow-500/10 rounded-lg">
+              <Zap className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+              <div>
+                <p className="text-sm text-yellow-300 font-medium">Generated using Rule-Based System</p>
+                <p className="text-xs text-yellow-400/70 mt-1">
+                  These recommendations were calculated instantly using our rule-based engine. 
+                  For AI-powered personalized projects, go back to profile and wait for AI generation.
+                </p>
+              </div>
             </div>
           )}
           
           <p className="text-zinc-400 text-sm">
-            {usingFallback 
-              ? `Here are ${projects.length} demo projects. Add OpenAI credits to generate personalized projects.`
-              : `Based on your profile, here are ${projects.length} projects tailored to your skills.`
+            {usingRuleBased 
+              ? `Based on your profile, here are ${projects.length} recommended projects.`
+              : `Based on your profile, here are ${projects.length} AI-generated projects tailored to your skills.`
             }
           </p>
         </div>

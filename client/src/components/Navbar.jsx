@@ -12,7 +12,7 @@ export default function Navbar() {
         <Link to="/" className="flex items-center gap-2 group">
           <Sparkles className="w-5 h-5 text-emerald-400 group-hover:rotate-12 transition-transform duration-300" />
           <span className="text-lg font-semibold tracking-tight text-white">
-            ProjectForge
+            IdeateX
           </span>
         </Link>
 

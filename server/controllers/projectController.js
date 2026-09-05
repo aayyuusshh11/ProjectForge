@@ -1,6 +1,24 @@
-import { generateProjects, evaluateProject, generateBlueprint, generateDevelopmentPlan, generateAIImprovements, checkExistingProjects, analyzeAICapability } from '../services/openaiService.js';
+import dotenv from 'dotenv';
 import { getRelevantKnowledge } from '../services/contextService.js';
 import { generateProjectsResponseSchema, evaluationSchema, blueprintSchema, developmentPlanSchema, aiImprovementsSchema, existingProjectSchema, aiCapabilitySchema, validateAIResponse } from '../schemas/projectSchema.js';
+
+dotenv.config();
+
+// Dynamically select AI service based on available API keys
+let aiService;
+
+if (process.env.GEMINI_API_KEY) {
+  const gemini = await import('../services/geminiService.js');
+  aiService = gemini.default || gemini;
+  console.log('Using Google Gemini AI');
+} else if (process.env.OPENAI_API_KEY) {
+  const openai = await import('../services/openaiService.js');
+  aiService = openai.default || openai;
+  console.log('Using OpenAI');
+} else {
+  console.log('No AI API key found - will use fallback data');
+  aiService = null;
+}
 
 /**
  * Generate project suggestions
@@ -32,11 +50,19 @@ export async function handleGenerateProjects(req, res) {
       });
     }
 
+    // Check if AI service is available
+    if (!aiService) {
+      return res.status(503).json({
+        success: false,
+        error: 'AI service not configured'
+      });
+    }
+
     // Get relevant knowledge based on profile
     const knowledge = getRelevantKnowledge(studentProfile);
 
-    // Generate projects using OpenAI
-    const aiResponse = await generateProjects(studentProfile, knowledge);
+    // Generate projects using AI service
+    const aiResponse = await aiService.generateProjects(studentProfile, knowledge);
 
     // Validate AI response
     const validation = validateAIResponse(generateProjectsResponseSchema, aiResponse);
@@ -59,7 +85,8 @@ export async function handleGenerateProjects(req, res) {
           experience: studentProfile.experience,
           duration: studentProfile.duration
         },
-        knowledgeUsed: knowledge.summary
+        knowledgeUsed: knowledge.summary,
+        aiProvider: process.env.GEMINI_API_KEY ? 'gemini' : 'openai'
       }
     });
 
@@ -87,11 +114,18 @@ export async function handleEvaluateProject(req, res) {
       });
     }
 
+    if (!aiService) {
+      return res.status(503).json({
+        success: false,
+        error: 'AI service not configured'
+      });
+    }
+
     // Get relevant knowledge
     const knowledge = getRelevantKnowledge(studentProfile || {});
 
-    // Evaluate using OpenAI
-    const aiResponse = await evaluateProject(project, studentProfile, knowledge);
+    // Evaluate using AI service
+    const aiResponse = await aiService.evaluateProject(project, studentProfile, knowledge);
 
     // Validate AI response
     const validation = validateAIResponse(evaluationSchema, aiResponse);
@@ -133,8 +167,15 @@ export async function handleGenerateBlueprint(req, res) {
       });
     }
 
-    // Generate blueprint using OpenAI
-    const aiResponse = await generateBlueprint(project, studentProfile);
+    if (!aiService) {
+      return res.status(503).json({
+        success: false,
+        error: 'AI service not configured'
+      });
+    }
+
+    // Generate blueprint using AI service
+    const aiResponse = await aiService.generateBlueprint(project, studentProfile);
 
     // Validate AI response
     const validation = validateAIResponse(blueprintSchema, aiResponse);
@@ -176,8 +217,15 @@ export async function handleGenerateDevelopmentPlan(req, res) {
       });
     }
 
-    // Generate development plan using OpenAI
-    const aiResponse = await generateDevelopmentPlan(project, studentProfile);
+    if (!aiService) {
+      return res.status(503).json({
+        success: false,
+        error: 'AI service not configured'
+      });
+    }
+
+    // Generate development plan using AI service
+    const aiResponse = await aiService.generateDevelopmentPlan(project, studentProfile);
 
     // Validate AI response
     const validation = validateAIResponse(developmentPlanSchema, aiResponse);
@@ -219,8 +267,15 @@ export async function handleGenerateAIImprovements(req, res) {
       });
     }
 
-    // Generate AI improvements using OpenAI
-    const aiResponse = await generateAIImprovements(project, studentProfile);
+    if (!aiService) {
+      return res.status(503).json({
+        success: false,
+        error: 'AI service not configured'
+      });
+    }
+
+    // Generate AI improvements using AI service
+    const aiResponse = await aiService.generateAIImprovements(project, studentProfile);
 
     // Validate AI response
     const validation = validateAIResponse(aiImprovementsSchema, aiResponse);
@@ -262,8 +317,15 @@ export async function handleCheckExistingProjects(req, res) {
       });
     }
 
-    // Check existing projects using OpenAI
-    const aiResponse = await checkExistingProjects(project);
+    if (!aiService) {
+      return res.status(503).json({
+        success: false,
+        error: 'AI service not configured'
+      });
+    }
+
+    // Check existing projects using AI service
+    const aiResponse = await aiService.checkExistingProjects(project);
 
     // Validate AI response
     const validation = validateAIResponse(existingProjectSchema, aiResponse);
@@ -305,8 +367,15 @@ export async function handleAnalyzeAICapability(req, res) {
       });
     }
 
-    // Analyze AI capability using OpenAI
-    const aiResponse = await analyzeAICapability(project);
+    if (!aiService) {
+      return res.status(503).json({
+        success: false,
+        error: 'AI service not configured'
+      });
+    }
+
+    // Analyze AI capability using AI service
+    const aiResponse = await aiService.analyzeAICapability(project);
 
     // Validate AI response
     const validation = validateAIResponse(aiCapabilitySchema, aiResponse);

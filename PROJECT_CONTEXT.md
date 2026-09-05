@@ -1,6 +1,6 @@
 # Project Context
 
-## Project: ProjectForge
+## Project: IdeateX (formerly ProjectForge)
 **Description:** AI-Powered Final-Year Project Generator & Mentor
 
 ## Current State
@@ -8,18 +8,21 @@
 - Frontend: React + Vite + Tailwind CSS (Vercel)
 - Backend: Node.js + Express (Railway)
 - Knowledge Base: 14 domains, 35 technologies, 23 patterns, 13 constraints
-- AI: OpenAI integrated
+- AI: Gemini integrated (free)
+- Rule-based: 50+ projects across 8 categories
 - Security: Rate limiting, input validation, security headers
 
 ## Features Implemented
 - [x] Landing Page
-- [x] Student Profile Form (with selectable options)
-- [x] Project Results Page (with AI + fallback)
+- [x] Student Profile Form (with selectable options + level selector)
+- [x] Project Results Page (AI + rule-based fallback)
 - [x] Project Details Page
 - [x] React Router Navigation
 - [x] Curated Knowledge Base
 - [x] Knowledge Service (getRelevantKnowledge)
-- [x] AI Project Generation (OpenAI integration)
+- [x] AI Project Generation (Gemini integration)
+- [x] Rule-based Project Generator (50+ projects)
+- [x] Domain-based Project Matching
 - [x] Zod Schema Validation
 - [x] Project Evaluation (with score bars)
 - [x] Technical Blueprint (architecture visualization)

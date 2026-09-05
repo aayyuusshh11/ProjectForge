@@ -1,5 +1,7 @@
 # Current Task
 
+## Project: IdeateX (formerly ProjectForge)
+
 ## Objective
 Complete Phase 0 - Project Initialization
 

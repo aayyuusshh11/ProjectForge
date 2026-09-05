@@ -126,3 +126,26 @@
 - Vercel deployment config (vercel.json)
 - Deployment guide (DEPLOYMENT.md)
 - Multi-origin CORS support
+
+## [0.12.0] - 2026-09-05
+
+### Changed
+- Profile form now starts with Project Level selector (Beginner/Intermediate/Advanced)
+- Recommended options are highlighted based on selected level
+- Fallback data is now personalized based on user inputs
+- Fit scores calculated based on skill/interest/domain matching
+- Different project templates for each difficulty level
+
+## [0.13.0] - 2026-09-05
+
+### Added
+- Rule-based project generator with 50+ projects across 8 categories
+- "View results instantly" button (small, secondary style)
+- Yellow banner indicating rule-based system was used
+- Domain-based project matching (prioritizes user's selected domain)
+- Categories: Web Dev, Mobile, AI/ML, Healthcare, Finance, Education, E-Commerce, Cybersecurity, IoT
+
+### Changed
+- Gemini model updated to gemini-3.6-flash
+- Project renamed from ProjectForge to IdeateX
+- Loading screen button is now subtle and secondary
