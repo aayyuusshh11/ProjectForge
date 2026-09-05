@@ -1,0 +1,95 @@
+[
+  {
+    "id": "team-size-small",
+    "rule": "Small team (1-2 members)",
+    "implication": "Avoid complex distributed systems. Prefer monolithic architecture.",
+    "maxComplexity": "Intermediate",
+    "recommendedDuration": "4-8 weeks"
+  },
+  {
+    "id": "team-size-medium",
+    "rule": "Medium team (3-4 members)",
+    "implication": "Can handle moderate complexity. Consider frontend/backend split.",
+    "maxComplexity": "Advanced",
+    "recommendedDuration": "8-14 weeks"
+  },
+  {
+    "id": "team-size-large",
+    "rule": "Large team (5+ members)",
+    "implication": "Can tackle complex projects. Consider microservices or feature-based teams.",
+    "maxComplexity": "Advanced",
+    "recommendedDuration": "12-18 weeks"
+  },
+  {
+    "id": "duration-short",
+    "rule": "Short duration (4-6 weeks)",
+    "implication": "Keep scope minimal. Use existing libraries. Avoid custom ML models.",
+    "maxComplexity": "Beginner",
+    "recommendedPatterns": ["CRUD Application", "Survey Tool"]
+  },
+  {
+    "id": "duration-medium",
+    "rule": "Medium duration (8-12 weeks)",
+    "implication": "Moderate scope. Can include API integrations and basic ML.",
+    "maxComplexity": "Intermediate",
+    "recommendedPatterns": ["Dashboard", "API Service", "Chatbot"]
+  },
+  {
+    "id": "duration-long",
+    "rule": "Long duration (14+ weeks)",
+    "implication": "Full scope possible. Can include custom ML, complex architecture.",
+    "maxComplexity": "Advanced",
+    "recommendedPatterns": ["ML Pipeline", "E-Commerce Platform", "IoT System"]
+  },
+  {
+    "id": "no-hardware",
+    "rule": "No specialized hardware",
+    "implication": "Avoid IoT, robotics, embedded systems. Focus on web/software solutions.",
+    "excludedDomains": ["IoT", "Robotics", "Embedded"],
+    "recommendedDomains": ["Web", "AI/ML", "Mobile"]
+  },
+  {
+    "id": "has-hardware",
+    "rule": "Has specialized hardware",
+    "implication": "Can consider IoT, computer vision, sensor-based projects.",
+    "additionalDomains": ["IoT", "Computer Vision", "Robotics"]
+  },
+  {
+    "id": "beginner-experience",
+    "rule": "Beginner experience level",
+    "implication": "Use well-documented technologies. Avoid advanced patterns. Prefer tutorials available.",
+    "recommendedStack": ["React", "Node.js", "MongoDB", "Express"],
+    "avoidStack": ["Kubernetes", "Microservices", "Custom ML"]
+  },
+  {
+    "id": "intermediate-experience",
+    "rule": "Intermediate experience level",
+    "implication": "Can handle moderate complexity. Can learn new technologies with guidance.",
+    "recommendedStack": ["React", "Node.js", "PostgreSQL", "Docker"],
+    "canLearn": ["TypeScript", "Testing", "CI/CD"]
+  },
+  {
+    "id": "advanced-experience",
+    "rule": "Advanced experience level",
+    "implication": "Can handle complex architectures, custom implementations, and cutting-edge tech.",
+    "recommendedStack": ["Any"],
+    "canHandle": ["Microservices", "Custom ML", "System Design"]
+  },
+  {
+    "id": "api-constraints",
+    "rule": "API/service constraints",
+    "implication": "Consider free tier limitations, rate limits, and alternatives.",
+    "alternatives": {
+      "openai": ["Hugging Face", "Local LLMs"],
+      "aws": ["Vercel", "Railway", "Render"],
+      "paid-apis": ["Free alternatives", "Self-hosted"]
+    }
+  },
+  {
+    "id": "avoid-generic",
+    "rule": "Avoid generic projects",
+    "implication": "Do not suggest basic todo apps, calculators, or simple CRUD unless beginner level.",
+    "blockedProjects": ["Todo App", "Calculator", "Weather App", "Basic CRUD"],
+    "exception": "Only if explicitly requested or beginner level"
+  }
+]

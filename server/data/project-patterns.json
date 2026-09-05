@@ -1,0 +1,209 @@
+[
+  {
+    "id": "dashboard",
+    "name": "Dashboard Application",
+    "description": "Data visualization and monitoring platform",
+    "typicalStack": ["React", "Node.js", "MongoDB", "Chart.js"],
+    "complexity": "Intermediate",
+    "duration": "8-12 weeks",
+    "bestFor": ["Analytics", "Monitoring", "Business intelligence"]
+  },
+  {
+    "id": "crud-app",
+    "name": "CRUD Application",
+    "description": "Create, Read, Update, Delete operations with UI",
+    "typicalStack": ["React", "Express", "MongoDB"],
+    "complexity": "Beginner",
+    "duration": "4-6 weeks",
+    "bestFor": ["Management systems", "Inventory", "Records"]
+  },
+  {
+    "id": "realtime-app",
+    "name": "Real-time Application",
+    "description": "Live updates and WebSocket communication",
+    "typicalStack": ["React", "Node.js", "Socket.io", "Redis"],
+    "complexity": "Intermediate",
+    "duration": "10-14 weeks",
+    "bestFor": ["Chat apps", "Live tracking", "Collaboration"]
+  },
+  {
+    "id": "ml-pipeline",
+    "name": "ML Pipeline",
+    "description": "Data processing and machine learning model deployment",
+    "typicalStack": ["Python", "TensorFlow", "FastAPI", "PostgreSQL"],
+    "complexity": "Advanced",
+    "duration": "12-16 weeks",
+    "bestFor": ["Predictions", "Classification", "Recommendations"]
+  },
+  {
+    "id": "ecommerce-platform",
+    "name": "E-Commerce Platform",
+    "description": "Online store with products, cart, and payments",
+    "typicalStack": ["Next.js", "Node.js", "MongoDB", "Stripe"],
+    "complexity": "Advanced",
+    "duration": "14-18 weeks",
+    "bestFor": ["Retail", "Marketplace", "Services"]
+  },
+  {
+    "id": "social-network",
+    "name": "Social Network",
+    "description": "User profiles, feeds, and interactions",
+    "typicalStack": ["React", "Node.js", "MongoDB", "Socket.io"],
+    "complexity": "Advanced",
+    "duration": "14-18 weeks",
+    "bestFor": ["Communities", "Networking", "Content sharing"]
+  },
+  {
+    "id": "api-service",
+    "name": "API Service",
+    "description": "RESTful or GraphQL backend service",
+    "typicalStack": ["Node.js", "Express", "PostgreSQL", "Redis"],
+    "complexity": "Intermediate",
+    "duration": "6-10 weeks",
+    "bestFor": ["Microservices", "Backend for frontend", "Data APIs"]
+  },
+  {
+    "id": "chatbot",
+    "name": "AI Chatbot",
+    "description": "Conversational AI with natural language processing",
+    "typicalStack": ["Python", "OpenAI", "FastAPI", "React"],
+    "complexity": "Intermediate",
+    "duration": "8-12 weeks",
+    "bestFor": ["Customer support", "Education", "Information retrieval"]
+  },
+  {
+    "id": "mobile-app",
+    "name": "Mobile Application",
+    "description": "Cross-platform mobile app",
+    "typicalStack": ["React Native", "Node.js", "Firebase"],
+    "complexity": "Intermediate",
+    "duration": "12-16 weeks",
+    "bestFor": ["Consumer apps", "On-the-go access"]
+  },
+  {
+    "id": "iot-system",
+    "name": "IoT System",
+    "description": "Device management and sensor data processing",
+    "typicalStack": ["Python", "MQTT", "Node.js", "InfluxDB"],
+    "complexity": "Advanced",
+    "duration": "14-18 weeks",
+    "bestFor": ["Smart home", "Industrial monitoring"]
+  },
+  {
+    "id": "content-management",
+    "name": "Content Management System",
+    "description": "Create, manage, and publish digital content",
+    "typicalStack": ["Next.js", "Node.js", "PostgreSQL", "S3"],
+    "complexity": "Intermediate",
+    "duration": "10-14 weeks",
+    "bestFor": ["Blogs", "News sites", "Documentation"]
+  },
+  {
+    "id": "booking-system",
+    "name": "Booking System",
+    "description": "Reservation and scheduling management",
+    "typicalStack": ["React", "Node.js", "PostgreSQL", "Calendar API"],
+    "complexity": "Intermediate",
+    "duration": "10-14 weeks",
+    "bestFor": ["Appointments", "Events", "Resources"]
+  },
+  {
+    "id": "analytics-platform",
+    "name": "Analytics Platform",
+    "description": "Data collection, processing, and visualization",
+    "typicalStack": ["React", "Python", "PostgreSQL", "D3.js"],
+    "complexity": "Advanced",
+    "duration": "12-16 weeks",
+    "bestFor": ["Business intelligence", "User analytics"]
+  },
+  {
+    "id": "notification-system",
+    "name": "Notification System",
+    "description": "Multi-channel notification delivery",
+    "typicalStack": ["Node.js", "Redis", "Socket.io", "Twilio"],
+    "complexity": "Intermediate",
+    "duration": "8-10 weeks",
+    "bestFor": ["Alerts", "Updates", "Marketing"]
+  },
+  {
+    "id": "search-engine",
+    "name": "Search Application",
+    "description": "Full-text search with filtering and ranking",
+    "typicalStack": ["React", "Node.js", "Elasticsearch", "MongoDB"],
+    "complexity": "Intermediate",
+    "duration": "10-14 weeks",
+    "bestFor": ["E-commerce search", "Document search"]
+  },
+  {
+    "id": "auth-system",
+    "name": "Authentication System",
+    "description": "User authentication and authorization",
+    "typicalStack": ["Node.js", "JWT", "OAuth", "PostgreSQL"],
+    "complexity": "Intermediate",
+    "duration": "6-8 weeks",
+    "bestFor": ["User management", "Security"]
+  },
+  {
+    "id": "file-management",
+    "name": "File Management System",
+    "description": "Upload, store, and manage files",
+    "typicalStack": ["React", "Node.js", "S3", "MongoDB"],
+    "complexity": "Intermediate",
+    "duration": "8-12 weeks",
+    "bestFor": ["Document storage", "Media management"]
+  },
+  {
+    "id": "workflow-automation",
+    "name": "Workflow Automation",
+    "description": "Business process automation and orchestration",
+    "typicalStack": ["React", "Node.js", "PostgreSQL", "Queue"],
+    "complexity": "Advanced",
+    "duration": "14-18 weeks",
+    "bestFor": ["Business processes", "Task automation"]
+  },
+  {
+    "id": "data-pipeline",
+    "name": "Data Pipeline",
+    "description": "ETL processes and data transformation",
+    "typicalStack": ["Python", "Apache Airflow", "PostgreSQL", "S3"],
+    "complexity": "Advanced",
+    "duration": "12-16 weeks",
+    "bestFor": ["Data warehousing", "Analytics"]
+  },
+  {
+    "id": "recommendation-engine",
+    "name": "Recommendation Engine",
+    "description": "Personalized content or product recommendations",
+    "typicalStack": ["Python", "TensorFlow", "FastAPI", "Redis"],
+    "complexity": "Advanced",
+    "duration": "12-16 weeks",
+    "bestFor": ["E-commerce", "Content platforms"]
+  },
+  {
+    "id": "image-processing",
+    "name": "Image Processing App",
+    "description": "Image analysis, manipulation, and recognition",
+    "typicalStack": ["Python", "OpenCV", "TensorFlow", "FastAPI"],
+    "complexity": "Advanced",
+    "duration": "12-16 weeks",
+    "bestFor": ["Medical imaging", "Security", "Media"]
+  },
+  {
+    "id": "mapping-app",
+    "name": "Mapping Application",
+    "description": "Geographic data visualization and navigation",
+    "typicalStack": ["React", "Mapbox", "Node.js", "PostGIS"],
+    "complexity": "Intermediate",
+    "duration": "10-14 weeks",
+    "bestFor": ["Navigation", "Location services"]
+  },
+  {
+    "id": "survey-tool",
+    "name": "Survey/Forms Tool",
+    "description": "Create and manage surveys with analytics",
+    "typicalStack": ["React", "Node.js", "MongoDB", "Chart.js"],
+    "complexity": "Beginner",
+    "duration": "6-10 weeks",
+    "bestFor": ["Research", "Feedback collection"]
+  }
+]

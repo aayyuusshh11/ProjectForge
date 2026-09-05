@@ -1,0 +1,1186 @@
+aPROJECTFORGE
+PHASE-BY-PHASE IMPLEMENTATION PLAN
+AI Project Generator & Mentor
+
+============================================================
+0. PROJECT PRIORITY
+============================================================
+
+The project is being judged primarily on:
+
+1. Code quality
+2. Security features
+3. Functional correctness
+4. Quality of the AI workflow
+5. UI/UX and demo quality
+
+Therefore, do NOT optimize only for speed. The implementation must remain clean,
+secure, modular, validated, and maintainable even though the competition has a
+short development window.
+
+IMPORTANT AI AGENT RULE:
+Before saying anything to the user or claiming that a task is complete, inspect
+and verify the relevant code, files, configuration, and runtime behavior.
+Do not assume that something works because it was written.
+Test/inspect first, then report the result.
+
+Do NOT claim:
+- "Implemented" without checking the implementation.
+- "Fixed" without reproducing/testing the issue.
+- "Secure" without inspecting the relevant security controls.
+- "Working" without actually validating the behavior.
+
+Before every response to the user:
+1. Review the current task state.
+2. Inspect relevant files.
+3. Verify changes.
+4. Run appropriate tests/checks where possible.
+5. Update the required context files.
+6. Only then report what was actually completed.
+
+Never fabricate test results, security guarantees, API responses, or implementation
+details.
+
+============================================================
+1. MANDATORY PROJECT CONTEXT FILES
+============================================================
+
+These four files must exist at the project root:
+
+PROJECT_CONTEXT.md
+ARCHITECTURE.md
+TASK.md
+CHANGELOG.md
+
+These files are mandatory project memory.
+
+After EVERY completed task/subtask:
+
+1. Update PROJECT_CONTEXT.md
+   - Update project state, features, decisions, constraints, and known issues
+     whenever relevant.
+
+2. Update ARCHITECTURE.md
+   - Update architecture, data flow, APIs, database, folder structure,
+     dependencies, security decisions, and technical decisions whenever changed.
+
+3. Update TASK.md
+   - Current objective
+   - Requirements
+   - Completed work
+   - Current status
+   - Current problem
+   - Expected behavior
+   - Next step
+
+4. Update CHANGELOG.md
+   - Short record of Added / Changed / Fixed / Security changes.
+
+IMPORTANT:
+The context files must represent the ACTUAL state of the codebase.
+Never write planned functionality as if it already exists.
+
+At the beginning of every new task, read:
+
+PROJECT_CONTEXT.md
+ARCHITECTURE.md
+TASK.md
+CHANGELOG.md
+
+Do not modify unrelated features.
+
+============================================================
+2. PROJECT GOAL
+============================================================
+
+ProjectForge is an AI-powered platform that helps final-year students transform
+their skills, interests, experience, team size, available time, and constraints
+into practical project ideas and development guidance.
+
+Core workflow:
+
+Student Profile
+    ->
+Relevant Curated Knowledge
+    ->
+AI Project Recommendations
+    ->
+Project Selection
+    ->
+Evaluate Project
+    ->
+Blueprint
+    ->
+Development Plan
+    ->
+AI Improvements
+    ->
+Existing Project Check
+    ->
+AI Capability Check
+
+The AI acts as a project mentor throughout this workflow.
+
+============================================================
+3. TECHNOLOGY STACK
+============================================================
+
+Frontend:
+- React
+- Vite
+- Tailwind CSS
+- Lucide React
+
+Backend:
+- Node.js
+- Express.js
+
+AI:
+- OpenAI API
+- Responses API
+- Structured output
+
+Database:
+- MongoDB
+
+Validation:
+- Zod
+
+External search:
+- Web/search API for existing-project verification
+
+Deployment:
+- Vercel for frontend
+- Render or equivalent for backend
+
+Use the simplest architecture that satisfies the requirements.
+Do not introduce unnecessary frameworks, microservices, queues, Redis, vector
+databases, or other infrastructure unless there is a demonstrated requirement.
+
+============================================================
+4. PHASE 0 - PROJECT INITIALIZATION
+============================================================
+
+Objective:
+Create a clean, secure, maintainable project foundation.
+
+Tasks:
+- Initialize frontend.
+- Initialize backend.
+- Configure Git.
+- Configure environment variables.
+- Create .env.example.
+- Create the four context files.
+- Establish frontend/backend folder structure.
+- Configure linting and formatting.
+- Add basic error-handling structure.
+
+Security:
+- Never commit secrets.
+- Add .env to .gitignore.
+- Use environment variables for API keys.
+- Separate development configuration from secrets.
+- Do not place OpenAI credentials in frontend code.
+
+Code quality:
+- Use clear naming.
+- Keep responsibilities separated.
+- Avoid giant components/files.
+- Establish consistent formatting.
+- Add linting.
+
+Testing:
+- Frontend starts.
+- Backend starts.
+- Linter runs.
+- No secrets are present in tracked files.
+
+Update all required context files.
+
+============================================================
+5. PHASE 1 - BASE UI
+============================================================
+
+Objective:
+Create the core user experience without AI integration.
+
+Screens:
+- Landing
+- Student Profile
+- Project Results
+- Project Details
+
+Student inputs:
+- Name (optional)
+- Skills
+- Interests
+- Domain
+- Experience level
+- Team size
+- Available time
+- Preferred technologies
+- Hardware availability
+- API/service constraints
+
+UI:
+- Near-black background
+- White primary text
+- Gray secondary text
+- Subtle borders
+- 4-6px radius
+- Minimal/no shadows
+- Responsive layout
+
+Code quality:
+- Reusable components.
+- Avoid duplicated markup.
+- Keep form state organized.
+- Separate API/service code from UI.
+
+Security:
+- Validate all user input on the frontend for UX.
+- Remember frontend validation is NOT a security boundary.
+
+Testing:
+- Form validation.
+- Required fields.
+- Invalid values.
+- Mobile/responsive behavior.
+- Navigation.
+
+Update all required context files.
+
+============================================================
+6. PHASE 2 - CURATED KNOWLEDGE BASE
+============================================================
+
+Objective:
+Create a small structured knowledge layer to ground AI generation.
+
+Create:
+
+backend/data/
+    domains.json
+    technologies.json
+    project-patterns.json
+    constraints.json
+
+Initial target:
+- 10+ domains
+- 30+ technologies
+- 20+ project patterns
+- 10+ constraint rules
+
+Do NOT manually create hundreds of complete projects.
+Use reusable patterns and relationships.
+
+Example technology data:
+
+{
+  "id": "react",
+  "name": "React",
+  "category": "Frontend",
+  "difficulty": "Intermediate",
+  "aiCapability": "High"
+}
+
+Create:
+
+getRelevantKnowledge(studentProfile)
+
+It should return only relevant knowledge.
+
+Security:
+- Treat curated files as trusted application configuration.
+- Validate their structure during development.
+- Never directly execute data from these files.
+
+Testing:
+- Test different student profiles.
+- Confirm relevant knowledge is selected.
+- Confirm irrelevant information is excluded where practical.
+
+Update all relevant context files.
+
+============================================================
+7. PHASE 3 - OPENAI INTEGRATION
+============================================================
+
+Objective:
+Securely connect the backend to OpenAI.
+
+Architecture:
+
+React
+  ->
+Express Backend
+  ->
+OpenAI API
+  ->
+Express Backend
+  ->
+React
+
+NEVER:
+React -> OpenAI directly
+
+Tasks:
+- Install/configure OpenAI SDK.
+- Create openaiService.
+- Store API key only on backend.
+- Create a test endpoint/service.
+- Implement timeout/error handling.
+- Implement structured output validation.
+
+Security:
+- API key only in server environment variables.
+- Never return API key to client.
+- Never log API keys.
+- Avoid logging full sensitive user input.
+- Validate request body.
+- Add request size limits.
+- Add basic rate limiting if practical.
+- Handle upstream errors safely.
+- Do not expose stack traces in production responses.
+
+Testing:
+- Valid OpenAI request.
+- Missing API key.
+- Invalid request.
+- OpenAI timeout/failure.
+- Malformed AI response.
+- Confirm frontend bundle does not contain secret.
+
+Update all context files.
+
+============================================================
+8. PHASE 4 - AI PROJECT GENERATOR
+============================================================
+
+Objective:
+Build the core feature.
+
+Endpoint:
+POST /api/projects/generate
+
+Input:
+
+{
+  "skills": [],
+  "interests": [],
+  "domain": "",
+  "experience": "",
+  "teamSize": 3,
+  "duration": "",
+  "technologies": [],
+  "hardware": false
+}
+
+AI context:
+
+Student Profile
++
+Relevant Curated Knowledge
++
+Generation Rules
+
+Generate 3-5 practical projects.
+
+Each project:
+
+- Title
+- Problem statement
+- Description
+- Target users
+- Difficulty
+- Estimated time
+- Skill match
+- Innovation
+- Core features
+- Advanced features
+- Technology stack
+
+AI rules:
+- Respect constraints.
+- Avoid generic projects.
+- Avoid impossible timelines.
+- Avoid unnecessary technologies.
+- Explain why the project fits.
+- Return structured data.
+- Do not claim unsupported originality.
+
+Security:
+- Validate and sanitize inputs.
+- Set reasonable maximum input lengths.
+- Prevent prompt/context abuse where practical.
+- Keep system instructions separate from user-controlled content.
+- Never allow user input to become an instruction that overrides system rules.
+- Validate AI output with Zod before returning it.
+- Never trust AI-generated fields blindly.
+
+Testing:
+- Beginner + web.
+- Intermediate + AI.
+- Advanced + cybersecurity.
+- No hardware.
+- Short duration.
+- Small team.
+- Invalid input.
+- OpenAI failure.
+- Invalid AI output.
+
+Update all context files.
+
+============================================================
+9. PHASE 5 - PROJECT RESULTS UI
+============================================================
+
+Objective:
+Display generated projects clearly.
+
+Project card:
+- Project title
+- Description
+- Difficulty
+- Fit score
+- Technologies
+- Estimated time
+- View Project
+
+States:
+- Loading
+- Error
+- Empty
+- Success
+
+Code quality:
+- Reusable ProjectCard.
+- Typed/validated project model.
+- No duplicated rendering logic.
+
+Security:
+- Safely render AI-generated text.
+- Never inject AI output as raw HTML.
+- Avoid dangerouslySetInnerHTML unless absolutely necessary and safely sanitized.
+
+Testing:
+- Correct rendering.
+- Long text.
+- Missing optional fields.
+- Error state.
+- Loading state.
+
+Update all context files.
+
+============================================================
+10. PHASE 6 - PROJECT EVALUATION
+============================================================
+
+Endpoint:
+POST /api/projects/evaluate
+
+Evaluate:
+- Technical feasibility
+- Skill match
+- Innovation
+- Complexity
+- Time feasibility
+- Resource requirements
+- Scalability
+
+Output:
+- Scores
+- Reasoning
+- Risks
+- Recommendations
+- Overall score
+
+Security:
+- Validate selected project input.
+- Restrict payload size.
+- Validate numeric score ranges.
+- Validate AI output schema.
+
+Testing:
+- Different team sizes.
+- Different durations.
+- Different experience levels.
+- Verify scores remain within expected range.
+
+Update all context files.
+
+============================================================
+11. PHASE 7 - TECHNICAL BLUEPRINT
+============================================================
+
+Endpoint:
+POST /api/projects/blueprint
+
+Generate:
+- System overview
+- Frontend architecture
+- Backend architecture
+- Database
+- APIs
+- AI components
+- External services
+- Authentication where relevant
+- Data flow
+
+Architecture should be practical for a student project.
+
+Security:
+- Blueprint must not expose secrets.
+- Do not generate real credentials.
+- Clearly distinguish example environment variables from real secrets.
+
+Testing:
+- Verify technologies are consistent with the selected project.
+- Verify dependencies between components are sensible.
+
+Update all context files.
+
+============================================================
+12. PHASE 8 - DEVELOPMENT PLAN
+============================================================
+
+Endpoint:
+POST /api/projects/development-plan
+
+Generate phases:
+
+1. Research
+2. Requirements
+3. UI/UX
+4. Database
+5. Backend
+6. Frontend
+7. AI/Logic
+8. Testing
+9. Deployment
+
+Each phase:
+- Objective
+- Tasks
+- Dependencies
+- Technologies
+- Expected output
+- Testing
+- Risks
+
+Adapt to:
+- Team size
+- Experience
+- Available time
+- Project complexity
+
+Testing:
+- Compare short-duration and long-duration projects.
+- Verify plans scale with team size.
+- Verify impossible timelines are flagged.
+
+Update all context files.
+
+============================================================
+13. PHASE 9 - AI IMPROVEMENTS
+============================================================
+
+Endpoint:
+POST /api/projects/ai-improvements
+
+For each AI feature:
+- Purpose
+- Technology
+- Required data
+- Complexity
+- Expected benefit
+- Limitations
+
+The system MUST be allowed to say:
+"AI is not recommended here."
+
+Do not add AI just because the product is AI-powered.
+
+Security:
+- Never recommend unsafe processing of private data.
+- Identify data privacy implications where applicable.
+- Mention human verification for high-impact domains.
+
+Testing:
+- Projects with obvious AI use.
+- Projects where AI adds little value.
+- Projects involving sensitive data.
+
+Update all context files.
+
+============================================================
+14. PHASE 10 - EXISTING PROJECT CHECK
+============================================================
+
+Objective:
+Determine whether similar projects exist.
+
+Workflow:
+
+Selected Project
+    ->
+External Search
+    ->
+Relevant Sources
+    ->
+Similarity Analysis
+    ->
+Report
+
+Search sources may include:
+- GitHub
+- Research publications
+- Existing applications
+- Public project repositories
+
+Output:
+- Similar projects
+- Similarity level
+- Existing features
+- Differences
+- Potentially unique components
+- Sources
+
+Critical rule:
+Never claim:
+"This project is 100% original."
+
+Use:
+"No closely matching implementation was identified in the sources checked."
+
+Security:
+- Treat external content as untrusted.
+- Do not execute external content.
+- Validate URLs.
+- Avoid SSRF-prone server-side URL fetching.
+- Use allowlisted search/provider APIs where possible.
+- Limit response size.
+
+Testing:
+- Search success.
+- Search failure.
+- No results.
+- Multiple similar results.
+- Malicious/unexpected external content.
+
+Update all context files.
+
+============================================================
+15. PHASE 11 - AI CAPABILITY CHECK
+============================================================
+
+Endpoint:
+POST /api/projects/ai-capability
+
+Analyze:
+- Frontend
+- Backend
+- Database
+- API integration
+- AI/ML
+- Testing
+- Documentation
+- Deployment
+- Hardware
+
+Ratings:
+- High
+- Medium
+- Low
+
+Explain the rating.
+
+Important distinction:
+"AI can generate code for this component"
+does NOT mean
+"AI can completely solve this component."
+
+Security:
+- Explain that AI-generated code requires human review.
+- Identify security-sensitive components requiring manual verification.
+
+Testing:
+- Standard web project.
+- AI/ML project.
+- Hardware project.
+
+Update all context files.
+
+============================================================
+16. PHASE 12 - PROJECT DETAILS EXPERIENCE
+============================================================
+
+Page:
+ /project/:id
+
+Display:
+- Project overview
+- Problem
+- Features
+- Tech stack
+- Difficulty
+- Fit score
+
+Actions:
+
+Evaluate Project
+Blueprint
+Development Plan
+AI Improvements
+Existing Project Check
+AI Capability
+
+Code quality:
+- Separate components.
+- Reuse project model.
+- Centralize API calls.
+- Avoid duplicated state/business logic.
+
+Testing:
+- Project selection.
+- Navigation.
+- Data persistence between views.
+- Loading/error states.
+
+Update all context files.
+
+============================================================
+17. PHASE 13 - DATABASE / PERSISTENCE
+============================================================
+
+Objective:
+Persist useful project data.
+
+Collections:
+
+students
+projects
+
+Project document may contain:
+- title
+- description
+- student profile
+- evaluation
+- blueprint
+- development plan
+- AI improvements
+- createdAt
+
+Security:
+- Validate MongoDB inputs.
+- Do not allow arbitrary query operators from user input.
+- Avoid storing unnecessary personal information.
+- Never store API secrets.
+- Configure database credentials through environment variables.
+- Use least-privilege database credentials where possible.
+- Add indexes only where useful.
+- Handle connection errors safely.
+
+Testing:
+- Create project.
+- Retrieve project.
+- Invalid ID.
+- Missing document.
+- Database unavailable.
+
+Update all context files.
+
+============================================================
+18. PHASE 14 - OPTIONAL AI MENTOR CHAT
+============================================================
+
+Only implement if core functionality is stable.
+
+The AI mentor receives:
+
+Selected Project
++
+Blueprint
++
+Development Plan
++
+Student Question
+
+The response should be specific to the selected project.
+
+Security:
+- Validate chat input.
+- Limit message length.
+- Rate limit where practical.
+- Avoid storing sensitive conversation data unnecessarily.
+- Do not expose system prompts.
+- Defend against prompt injection through project/search content.
+
+Testing:
+- Normal question.
+- Unrelated question.
+- Prompt injection attempt.
+- Very long input.
+- API failure.
+
+Update all context files.
+
+============================================================
+19. PHASE 15 - SECURITY HARDENING
+============================================================
+
+This phase is mandatory because the contest explicitly judges security.
+
+Implement/check:
+
+1. Environment secrets
+2. Secure CORS configuration
+3. Helmet/security headers where appropriate
+4. Request body size limits
+5. Input validation with Zod
+6. Rate limiting
+7. Safe error responses
+8. No secret logging
+9. No API keys in frontend
+10. Safe rendering of AI output
+11. MongoDB input validation
+12. External search safety
+13. Prompt injection defenses
+14. Dependency audit
+15. Production configuration
+16. HTTPS in deployment
+17. Secure cookie settings if cookies are later introduced
+18. Principle of least privilege
+19. Proper HTTP status codes
+20. Consistent centralized error handling
+
+Do not claim a feature is secure merely because a library is installed.
+Verify the actual configuration and behavior.
+
+Testing:
+- Invalid payloads
+- Oversized payloads
+- Missing fields
+- Rate-limit behavior
+- Unauthorized/invalid requests
+- Malformed IDs
+- Prompt injection attempts
+- Error responses
+- Secret exposure checks
+
+Update all context files.
+
+============================================================
+20. PHASE 16 - CODE QUALITY REVIEW
+============================================================
+
+Review the entire codebase.
+
+Check:
+
+- Naming
+- Folder structure
+- Separation of concerns
+- Reusability
+- Duplication
+- Error handling
+- Type/schema consistency
+- API contracts
+- Dead code
+- Unused dependencies
+- Console logs
+- Magic numbers
+- Environment configuration
+- Comments only where useful
+
+Run:
+- Linter
+- Formatter
+- Tests
+- Build
+- Dependency audit
+
+Fix actual issues.
+
+Do not rewrite working code just for aesthetic reasons.
+
+Update all context files.
+
+============================================================
+21. PHASE 17 - END-TO-END TESTING
+============================================================
+
+Test the complete journey:
+
+Landing
+ ->
+Profile
+ ->
+Generate Projects
+ ->
+Select Project
+ ->
+Evaluate
+ ->
+Blueprint
+ ->
+Development Plan
+ ->
+AI Improvements
+ ->
+Existing Project Check
+ ->
+AI Capability
+
+Test:
+- Happy path
+- Invalid input
+- API failures
+- Search failures
+- Database failures
+- AI malformed response
+- Slow responses
+- Empty responses
+- Mobile layout
+
+Record real results.
+
+Never fabricate test results.
+
+Update all context files.
+
+============================================================
+22. PHASE 18 - UI POLISH
+============================================================
+
+Only after functionality, security, and code quality are stable.
+
+Improve:
+- Loading states
+- Empty states
+- Error states
+- Typography
+- Spacing
+- Responsive behavior
+- Micro-interactions
+- Navigation
+- Visual hierarchy
+
+Do not introduce unnecessary animation or dependencies.
+
+Update all context files.
+
+============================================================
+23. PHASE 19 - DEPLOYMENT
+============================================================
+
+Deploy frontend and backend separately if needed.
+
+Before deployment:
+- Production environment variables
+- Secure CORS
+- HTTPS
+- Production error handling
+- No development secrets
+- No debug logs
+- Build verification
+- Dependency audit
+
+Test deployed application from the public frontend.
+
+Verify:
+Frontend
+ ->
+Backend
+ ->
+OpenAI
+ ->
+Database/search services
+
+Update all context files.
+
+============================================================
+24. PHASE 20 - DEMO PREPARATION
+============================================================
+
+Use one strong student scenario:
+
+Skills:
+React, Python, Node.js
+
+Interest:
+Healthcare + AI
+
+Experience:
+Intermediate
+
+Team:
+3
+
+Duration:
+4 months
+
+Hardware:
+None
+
+Demo:
+
+Generate Projects
+ ->
+Select Project
+ ->
+Evaluate
+ ->
+Blueprint
+ ->
+Development Plan
+ ->
+AI Improvements
+ ->
+Existing Project Check
+ ->
+AI Capability
+
+The entire workflow should be understandable within 2-3 minutes.
+
+Do not rely on an unstable live API during the demo without a fallback.
+
+If a fallback is added:
+- Clearly keep it as demo/test data.
+- Do not pretend it is live AI output.
+- Ensure fallback data follows the same schema.
+
+Update all context files.
+
+============================================================
+25. IMPLEMENTATION PRIORITY
+============================================================
+
+MUST HAVE:
+
+Phase 0
+Phase 1
+Phase 2
+Phase 3
+Phase 4
+Phase 5
+Phase 6
+Phase 7
+Phase 8
+
+IMPORTANT:
+
+Phase 9
+Phase 10
+Phase 11
+Phase 12
+Phase 15
+Phase 16
+Phase 17
+
+STRETCH:
+
+Phase 13
+Phase 14
+Phase 18+
+depending on remaining time.
+
+Security and code-quality phases are NOT optional even if the UI is incomplete.
+
+============================================================
+26. FINAL ARCHITECTURE
+============================================================
+
+                         PROJECTFORGE
+                              |
+                              v
+                      Student Profile
+                              |
+                              v
+                     Backend / Context
+                              |
+                 +------------+------------+
+                 |                         |
+                 v                         v
+          Curated Knowledge          External Search
+                 |                         |
+                 +------------+------------+
+                              |
+                              v
+                         OpenAI API
+                              |
+                              v
+                    Structured Validation
+                              |
+                              v
+                     Project Recommendations
+                              |
+                              v
+                       Selected Project
+                              |
+             +----------------+----------------+
+             |                |                |
+             v                v                v
+          Evaluate         Blueprint      Development Plan
+             |                |                |
+             +----------------+----------------+
+                              |
+                              v
+                       AI Improvements
+                              |
+                    +---------+---------+
+                    |                   |
+                    v                   v
+             Existing Check       AI Capability
+                    |                   |
+                    +---------+---------+
+                              |
+                              v
+                           Student
+
+============================================================
+27. FINAL DEVELOPMENT RULES
+============================================================
+
+1. Build the simplest solution that satisfies the requirement.
+2. Security is part of the feature, not a final decoration.
+3. Validate all external and user-controlled input.
+4. Never trust AI output without schema validation.
+5. Never expose secrets to the client.
+6. Never claim originality without evidence.
+7. Never claim tests passed without running them.
+8. Never claim a security control exists without verifying it.
+9. Never modify unrelated features.
+10. Read the four context files before every new task.
+11. Update the four context files after every completed task.
+12. Keep architecture consistent unless there is a documented reason to change it.
+13. Prefer reusable services/components over duplicated code.
+14. Keep AI prompts versioned/organized and separate from route handlers.
+15. Keep business logic out of UI components.
+16. Centralize error handling.
+17. Use structured API contracts.
+18. Keep dependencies minimal.
+19. Test the changed functionality before moving forward.
+20. Before reporting completion, inspect the actual implementation and state exactly
+    what was verified.
+
+============================================================
+28. DEFINITION OF DONE
+============================================================
+
+A task is DONE only when:
+
+[ ] Implementation exists.
+[ ] Relevant code was inspected.
+[ ] Relevant tests/checks were run.
+[ ] Errors were addressed or explicitly documented.
+[ ] Security implications were considered.
+[ ] Context files were updated.
+[ ] CHANGELOG was updated.
+[ ] TASK.md describes the next step.
+[ ] No unrelated functionality was broken.
+
+The project is DONE only when the core workflow works end-to-end, the application
+builds successfully, security controls are implemented and verified, and the
+codebase is clean enough for a judge to inspect without discovering a digital
+crime scene.

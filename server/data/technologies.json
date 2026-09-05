@@ -1,0 +1,282 @@
+[
+  {
+    "id": "react",
+    "name": "React",
+    "category": "Frontend",
+    "difficulty": "Intermediate",
+    "aiCapability": "High",
+    "bestFor": ["SPAs", "Dashboards", "Interactive UIs"]
+  },
+  {
+    "id": "vue",
+    "name": "Vue.js",
+    "category": "Frontend",
+    "difficulty": "Beginner",
+    "aiCapability": "High",
+    "bestFor": ["SPAs", "Progressive enhancement"]
+  },
+  {
+    "id": "angular",
+    "name": "Angular",
+    "category": "Frontend",
+    "difficulty": "Advanced",
+    "aiCapability": "High",
+    "bestFor": ["Enterprise apps", "Large SPAs"]
+  },
+  {
+    "id": "svelte",
+    "name": "Svelte",
+    "category": "Frontend",
+    "difficulty": "Intermediate",
+    "aiCapability": "High",
+    "bestFor": ["Performance-critical UIs"]
+  },
+  {
+    "id": "nextjs",
+    "name": "Next.js",
+    "category": "Fullstack",
+    "difficulty": "Intermediate",
+    "aiCapability": "High",
+    "bestFor": ["SSR apps", "E-commerce", "Blogs"]
+  },
+  {
+    "id": "nodejs",
+    "name": "Node.js",
+    "category": "Backend",
+    "difficulty": "Intermediate",
+    "aiCapability": "High",
+    "bestFor": ["APIs", "Real-time apps", "Microservices"]
+  },
+  {
+    "id": "express",
+    "name": "Express.js",
+    "category": "Backend",
+    "difficulty": "Beginner",
+    "aiCapability": "High",
+    "bestFor": ["REST APIs", "Web servers"]
+  },
+  {
+    "id": "python",
+    "name": "Python",
+    "category": "Backend",
+    "difficulty": "Beginner",
+    "aiCapability": "High",
+    "bestFor": ["AI/ML", "Data science", "Scripting"]
+  },
+  {
+    "id": "django",
+    "name": "Django",
+    "category": "Backend",
+    "difficulty": "Intermediate",
+    "aiCapability": "High",
+    "bestFor": ["Full-stack apps", "CMS", "APIs"]
+  },
+  {
+    "id": "flask",
+    "name": "Flask",
+    "category": "Backend",
+    "difficulty": "Beginner",
+    "aiCapability": "High",
+    "bestFor": ["Lightweight APIs", "Microservices"]
+  },
+  {
+    "id": "fastapi",
+    "name": "FastAPI",
+    "category": "Backend",
+    "difficulty": "Intermediate",
+    "aiCapability": "High",
+    "bestFor": ["High-performance APIs", "ML services"]
+  },
+  {
+    "id": "mongodb",
+    "name": "MongoDB",
+    "category": "Database",
+    "difficulty": "Beginner",
+    "aiCapability": "Medium",
+    "bestFor": ["Document storage", "Flexible schemas"]
+  },
+  {
+    "id": "postgresql",
+    "name": "PostgreSQL",
+    "category": "Database",
+    "difficulty": "Intermediate",
+    "aiCapability": "Medium",
+    "bestFor": ["Relational data", "Complex queries"]
+  },
+  {
+    "id": "mysql",
+    "name": "MySQL",
+    "category": "Database",
+    "difficulty": "Beginner",
+    "aiCapability": "Medium",
+    "bestFor": ["Web apps", "E-commerce"]
+  },
+  {
+    "id": "firebase",
+    "name": "Firebase",
+    "category": "Database",
+    "difficulty": "Beginner",
+    "aiCapability": "Medium",
+    "bestFor": ["Real-time apps", "Mobile backends"]
+  },
+  {
+    "id": "redis",
+    "name": "Redis",
+    "category": "Database",
+    "difficulty": "Intermediate",
+    "aiCapability": "Low",
+    "bestFor": ["Caching", "Session storage", "Queues"]
+  },
+  {
+    "id": "tensorflow",
+    "name": "TensorFlow",
+    "category": "AI/ML",
+    "difficulty": "Advanced",
+    "aiCapability": "High",
+    "bestFor": ["Deep learning", "Neural networks"]
+  },
+  {
+    "id": "pytorch",
+    "name": "PyTorch",
+    "category": "AI/ML",
+    "difficulty": "Advanced",
+    "aiCapability": "High",
+    "bestFor": ["Research", "Deep learning"]
+  },
+  {
+    "id": "scikit-learn",
+    "name": "Scikit-learn",
+    "category": "AI/ML",
+    "difficulty": "Intermediate",
+    "aiCapability": "High",
+    "bestFor": ["Traditional ML", "Classification", "Regression"]
+  },
+  {
+    "id": "openai",
+    "name": "OpenAI API",
+    "category": "AI/ML",
+    "difficulty": "Intermediate",
+    "aiCapability": "High",
+    "bestFor": ["Chatbots", "Content generation", "Analysis"]
+  },
+  {
+    "id": "langchain",
+    "name": "LangChain",
+    "category": "AI/ML",
+    "difficulty": "Advanced",
+    "aiCapability": "High",
+    "bestFor": ["LLM apps", "RAG systems", "Agents"]
+  },
+  {
+    "id": "docker",
+    "name": "Docker",
+    "category": "DevOps",
+    "difficulty": "Intermediate",
+    "aiCapability": "Low",
+    "bestFor": ["Containerization", "Deployment"]
+  },
+  {
+    "id": "aws",
+    "name": "AWS",
+    "category": "Cloud",
+    "difficulty": "Advanced",
+    "aiCapability": "Medium",
+    "bestFor": ["Scalable apps", "Enterprise"]
+  },
+  {
+    "id": "gcp",
+    "name": "Google Cloud",
+    "category": "Cloud",
+    "difficulty": "Advanced",
+    "aiCapability": "Medium",
+    "bestFor": ["ML deployment", "Big data"]
+  },
+  {
+    "id": "vercel",
+    "name": "Vercel",
+    "category": "Deployment",
+    "difficulty": "Beginner",
+    "aiCapability": "Low",
+    "bestFor": ["Frontend hosting", "Next.js apps"]
+  },
+  {
+    "id": "tailwind",
+    "name": "Tailwind CSS",
+    "category": "Frontend",
+    "difficulty": "Beginner",
+    "aiCapability": "High",
+    "bestFor": ["Rapid UI development"]
+  },
+  {
+    "id": "bootstrap",
+    "name": "Bootstrap",
+    "category": "Frontend",
+    "difficulty": "Beginner",
+    "aiCapability": "High",
+    "bestFor": ["Responsive layouts"]
+  },
+  {
+    "id": "typescript",
+    "name": "TypeScript",
+    "category": "Language",
+    "difficulty": "Intermediate",
+    "aiCapability": "High",
+    "bestFor": ["Type-safe code", "Large projects"]
+  },
+  {
+    "id": "graphql",
+    "name": "GraphQL",
+    "category": "API",
+    "difficulty": "Intermediate",
+    "aiCapability": "Medium",
+    "bestFor": ["Flexible APIs", "Mobile apps"]
+  },
+  {
+    "id": "socketio",
+    "name": "Socket.io",
+    "category": "Real-time",
+    "difficulty": "Intermediate",
+    "aiCapability": "Low",
+    "bestFor": ["Chat apps", "Live updates"]
+  },
+  {
+    "id": "stripe",
+    "name": "Stripe",
+    "category": "Payment",
+    "difficulty": "Intermediate",
+    "aiCapability": "Low",
+    "bestFor": ["E-commerce payments"]
+  },
+  {
+    "id": "twilio",
+    "name": "Twilio",
+    "category": "Communication",
+    "difficulty": "Intermediate",
+    "aiCapability": "Low",
+    "bestFor": ["SMS", "Voice calls"]
+  },
+  {
+    "id": "opencv",
+    "name": "OpenCV",
+    "category": "Computer Vision",
+    "difficulty": "Advanced",
+    "aiCapability": "High",
+    "bestFor": ["Image processing", "Object detection"]
+  },
+  {
+    "id": "selenium",
+    "name": "Selenium",
+    "category": "Testing",
+    "difficulty": "Intermediate",
+    "aiCapability": "Medium",
+    "bestFor": ["Web scraping", "E2E testing"]
+  },
+  {
+    "id": "jest",
+    "name": "Jest",
+    "category": "Testing",
+    "difficulty": "Beginner",
+    "aiCapability": "High",
+    "bestFor": ["Unit testing", "Integration testing"]
+  }
+]

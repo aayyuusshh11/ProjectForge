@@ -1,0 +1,616 @@
+# ProjectForge
+
+## Software Requirements Specification (SRS)
+
+**Version:** 1.0
+**Project:** ProjectForge
+**System:** AI-Powered Final-Year Project Generator & Mentor
+
+---
+
+# 1. Introduction
+
+## 1.1 Purpose
+
+This document defines the functional and non-functional requirements for ProjectForge, an AI-powered platform designed to help final-year students identify, evaluate, plan, and improve practical academic projects.
+
+The system uses student-provided information, curated project knowledge, and AI reasoning to generate personalized project recommendations and technical guidance.
+
+---
+
+# 2. Problem Statement
+
+Final-year students often have difficulty selecting suitable projects because they lack:
+
+* Clear understanding of project feasibility
+* Knowledge of suitable technologies
+* Experience designing system architecture
+* Understanding of project complexity
+* Awareness of existing implementations
+* A structured development plan
+* Knowledge of where AI can meaningfully improve a project
+
+ProjectForge provides an integrated solution for these problems.
+
+---
+
+# 3. Objectives
+
+The system shall:
+
+1. Collect relevant student information.
+2. Generate personalized project ideas.
+3. Evaluate project feasibility.
+4. Generate technical blueprints.
+5. Generate development plans.
+6. Recommend meaningful AI improvements.
+7. Analyze existing similar projects.
+8. Analyze AI assistance capability.
+9. Provide practical, explainable recommendations.
+
+---
+
+# 4. System Scope
+
+ProjectForge includes:
+
+```text
+Student Profiling
+Project Generation
+Project Evaluation
+Project Blueprint
+Development Planning
+AI Improvement Analysis
+Existing Project Verification
+AI Capability Analysis
+```
+
+The MVP does not include:
+
+```text
+Authentication
+Progress Tracking
+Social Collaboration
+Mobile Application
+Faculty Management
+```
+
+---
+
+# 5. Users
+
+## 5.1 Student
+
+The primary user.
+
+The student can:
+
+* Enter their skills
+* Enter interests
+* Specify constraints
+* Generate projects
+* Compare projects
+* Select a project
+* Evaluate the project
+* View the blueprint
+* View development plans
+* View AI improvements
+* Check similar projects
+* Analyze AI development capability
+
+---
+
+# 6. Functional Requirements
+
+## FR-01 Student Information
+
+The system shall allow students to enter:
+
+* Skills
+* Programming languages
+* Frameworks
+* Interests
+* Domain
+* Experience level
+* Team size
+* Available time
+* Hardware availability
+* Preferred technologies
+
+---
+
+## FR-02 Project Generation
+
+The system shall generate multiple project recommendations based on student information.
+
+Each project shall contain:
+
+* Name
+* Description
+* Problem statement
+* Target users
+* Difficulty
+* Estimated development time
+* Skill match
+* Innovation
+* Technologies
+* Core features
+* Advanced features
+
+---
+
+## FR-03 Project Evaluation
+
+The system shall evaluate selected projects based on:
+
+* Technical feasibility
+* Skill compatibility
+* Innovation
+* Complexity
+* Time feasibility
+* Resource requirements
+* Scalability
+
+The system shall provide numerical scores and explanations.
+
+---
+
+## FR-04 Project Blueprint
+
+The system shall generate:
+
+* System overview
+* Components
+* Frontend architecture
+* Backend architecture
+* Database structure
+* APIs
+* External services
+* AI components
+* Data flow
+
+---
+
+## FR-05 Development Plan
+
+The system shall divide the project into development phases.
+
+Each phase shall include:
+
+* Objective
+* Tasks
+* Technologies
+* Dependencies
+* Expected output
+* Testing requirements
+* Potential risks
+
+---
+
+## FR-06 AI Improvements
+
+The system shall identify potential AI applications within the selected project.
+
+For each proposed AI feature, the system shall provide:
+
+* Purpose
+* Required technology
+* Required data
+* Expected benefit
+* Complexity
+* Limitations
+
+---
+
+## FR-07 Existing Project Analysis
+
+The system shall optionally search external sources for similar projects.
+
+Potential sources include:
+
+* GitHub
+* Research publications
+* Existing applications
+* Public project repositories
+
+The system shall provide:
+
+* Similarity assessment
+* Existing implementations
+* Similar features
+* Differences
+* Potential originality
+
+The system shall not guarantee that a project is original.
+
+---
+
+## FR-08 AI Capability Analysis
+
+The system shall evaluate where AI development tools can assist with the project.
+
+The analysis shall consider:
+
+* Frontend development
+* Backend development
+* Database development
+* API development
+* AI/ML development
+* Testing
+* Documentation
+* Deployment
+* Hardware integration
+
+Each component shall receive an AI assistance rating:
+
+```text
+High
+Medium
+Low
+```
+
+---
+
+## FR-09 Structured AI Output
+
+AI responses shall follow predefined schemas.
+
+The backend shall validate generated responses before sending them to the frontend.
+
+Invalid responses shall be rejected or regenerated.
+
+---
+
+# 7. Data Requirements
+
+## 7.1 Student Data
+
+Student-provided data shall be used as the primary personalization input.
+
+---
+
+## 7.2 Curated Knowledge
+
+The system shall maintain structured knowledge for:
+
+* Domains
+* Technologies
+* Project patterns
+* Difficulty
+* Constraints
+* Technology capabilities
+* APIs
+* Hardware
+
+---
+
+## 7.3 External Data
+
+External search data may be used for:
+
+* Existing project verification
+* Research references
+* Current technologies
+
+External information should not be treated as guaranteed truth without verification.
+
+---
+
+# 8. AI Requirements
+
+The AI system shall:
+
+1. Use student information.
+2. Use relevant curated knowledge.
+3. Respect project constraints.
+4. Produce structured outputs.
+5. Explain recommendations.
+6. Avoid unsupported claims.
+7. Identify uncertainty where appropriate.
+8. Prefer practical solutions.
+9. Avoid unnecessary technologies.
+10. Avoid unnecessary AI components.
+
+---
+
+# 9. System Architecture
+
+```text
+                   Student
+                      │
+                      ▼
+               React Frontend
+                      │
+                      ▼
+               Express Backend
+                      │
+          ┌───────────┴───────────┐
+          ▼                       ▼
+   Curated Knowledge         External Search
+          │                       │
+          └───────────┬───────────┘
+                      ▼
+                  OpenAI API
+                      │
+                      ▼
+             Structured Response
+                      │
+                      ▼
+               Express Backend
+                      │
+                      ▼
+               React Frontend
+```
+
+---
+
+# 10. Technology Requirements
+
+## Frontend
+
+* React
+* Vite
+* Tailwind CSS
+
+## Backend
+
+* Node.js
+* Express.js
+
+## AI
+
+* OpenAI API
+
+## Database
+
+* MongoDB
+
+## Validation
+
+* Zod
+
+---
+
+# 11. API Requirements
+
+### Generate Projects
+
+`POST /api/projects/generate`
+
+### Evaluate
+
+`POST /api/projects/evaluate`
+
+### Blueprint
+
+`POST /api/projects/blueprint`
+
+### Development Plan
+
+`POST /api/projects/development-plan`
+
+### AI Improvements
+
+`POST /api/projects/ai-improvements`
+
+### Existing Project Check
+
+`POST /api/projects/existing-check`
+
+### AI Capability
+
+`POST /api/projects/ai-capability`
+
+---
+
+# 12. Non-Functional Requirements
+
+## Performance
+
+* Initial page should load quickly.
+* API responses should provide loading states.
+* AI requests should handle timeout and failure cases.
+
+## Reliability
+
+* Invalid AI output must be detected.
+* API failures must display useful error messages.
+* A fallback/demo response should be available during development.
+
+## Security
+
+* OpenAI API keys must never be exposed to the frontend.
+* Secrets must be stored in environment variables.
+* User input must be validated.
+* External API responses must be treated as untrusted data.
+
+## Usability
+
+The system should be understandable to students with basic technical knowledge.
+
+The workflow should require minimal navigation.
+
+---
+
+# 13. Error Handling
+
+The system shall handle:
+
+```text
+Invalid Student Input
+OpenAI API Failure
+Timeout
+Invalid AI Response
+Search Failure
+Database Failure
+Network Failure
+```
+
+Example:
+
+```text
+Unable to generate projects right now.
+
+Please retry.
+```
+
+The system should not expose internal API keys, stack traces, or implementation details.
+
+---
+
+# 14. Security Requirements
+
+The system shall:
+
+* Keep API credentials server-side.
+* Validate all incoming requests.
+* Sanitize external content.
+* Limit API abuse where practical.
+* Avoid storing unnecessary personal information.
+
+---
+
+# 15. UI Requirements
+
+The UI shall provide:
+
+### Student Profile
+
+Input form for student information.
+
+### Project Results
+
+Cards showing:
+
+* Project title
+* Description
+* Difficulty
+* Fit score
+* Technologies
+* Estimated time
+
+### Project Details
+
+Buttons:
+
+```text
+Evaluate Project
+Blueprint
+Development Plan
+AI Improvements
+Existing Project Check
+AI Capability
+```
+
+---
+
+# 16. Acceptance Criteria
+
+The MVP is complete when:
+
+### AC-01
+
+A student can enter their profile.
+
+### AC-02
+
+The system generates at least three relevant projects.
+
+### AC-03
+
+Each project has a difficulty level and description.
+
+### AC-04
+
+The student can select a project.
+
+### AC-05
+
+The system can generate an evaluation.
+
+### AC-06
+
+The system can generate a technical blueprint.
+
+### AC-07
+
+The system can generate a development plan.
+
+### AC-08
+
+The system can identify AI improvement opportunities.
+
+### AC-09
+
+The system can analyze existing similar projects.
+
+### AC-10
+
+The system can analyze AI development capability.
+
+### AC-11
+
+The application handles API failures gracefully.
+
+### AC-12
+
+The OpenAI API key is never exposed to the client.
+
+---
+
+# 17. Constraints
+
+The initial implementation must:
+
+* Be achievable within a short development period.
+* Avoid unnecessary infrastructure.
+* Avoid requiring a large proprietary dataset.
+* Use structured AI responses.
+* Remain modular enough for future expansion.
+
+---
+
+# 18. Future Scope
+
+Future versions may include:
+
+* Authentication
+* Student project history
+* Faculty mentor accounts
+* GitHub integration
+* Automatic documentation
+* Architecture diagram generation
+* Dataset discovery
+* Research paper recommendations
+* Codebase analysis
+* Resume integration
+* Team formation
+* Continuous AI mentorship
+
+---
+
+# 19. Final Product Definition
+
+ProjectForge is not intended to be a generic AI chatbot.
+
+Its purpose is to provide a structured journey:
+
+```text
+Student Profile
+      ↓
+Personalized Project Ideas
+      ↓
+Project Evaluation
+      ↓
+Technical Blueprint
+      ↓
+Development Plan
+      ↓
+AI Improvements
+      ↓
+Existing Project Analysis
+      ↓
+AI Capability Analysis
+```
+
+The final output should enable a student to move directly from **project uncertainty to an actionable development plan**.

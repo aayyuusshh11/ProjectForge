@@ -1,0 +1,114 @@
+[
+  {
+    "id": "healthcare",
+    "name": "Healthcare",
+    "description": "Medical systems, patient care, health monitoring",
+    "commonProjects": ["Patient monitoring", "Medical records", "Appointment systems"],
+    "aiCapability": "High",
+    "typicalComplexity": "Intermediate"
+  },
+  {
+    "id": "education",
+    "name": "Education",
+    "description": "Learning platforms, student management, assessment tools",
+    "commonProjects": ["LMS", "Quiz systems", "Student analytics"],
+    "aiCapability": "High",
+    "typicalComplexity": "Intermediate"
+  },
+  {
+    "id": "finance",
+    "name": "Finance",
+    "description": "Banking, payments, financial analysis",
+    "commonProjects": ["Budget trackers", "Payment systems", "Portfolio management"],
+    "aiCapability": "High",
+    "typicalComplexity": "Advanced"
+  },
+  {
+    "id": "ecommerce",
+    "name": "E-Commerce",
+    "description": "Online stores, marketplaces, inventory management",
+    "commonProjects": ["Product catalogs", "Shopping carts", "Order management"],
+    "aiCapability": "High",
+    "typicalComplexity": "Intermediate"
+  },
+  {
+    "id": "entertainment",
+    "name": "Entertainment",
+    "description": "Media streaming, gaming, content platforms",
+    "commonProjects": ["Video platforms", "Music apps", "Content management"],
+    "aiCapability": "Medium",
+    "typicalComplexity": "Intermediate"
+  },
+  {
+    "id": "agriculture",
+    "name": "Agriculture",
+    "description": "Farm management, crop monitoring, supply chain",
+    "commonProjects": ["Crop monitoring", "Farm management", "Marketplace"],
+    "aiCapability": "High",
+    "typicalComplexity": "Intermediate"
+  },
+  {
+    "id": "transportation",
+    "name": "Transportation",
+    "description": "Logistics, ride-sharing, fleet management",
+    "commonProjects": ["Route optimization", "Fleet tracking", "Booking systems"],
+    "aiCapability": "High",
+    "typicalComplexity": "Advanced"
+  },
+  {
+    "id": "security",
+    "name": "Security",
+    "description": "Cybersecurity, surveillance, access control",
+    "commonProjects": ["Intrusion detection", "Access management", "Threat analysis"],
+    "aiCapability": "High",
+    "typicalComplexity": "Advanced"
+  },
+  {
+    "id": "social-media",
+    "name": "Social Media",
+    "description": "Social networks, content sharing, messaging",
+    "commonProjects": ["Social platforms", "Content feeds", "Messaging apps"],
+    "aiCapability": "High",
+    "typicalComplexity": "Intermediate"
+  },
+  {
+    "id": "iot",
+    "name": "IoT",
+    "description": "Internet of Things, smart devices, home automation",
+    "commonProjects": ["Smart home", "Sensor networks", "Device management"],
+    "aiCapability": "Medium",
+    "typicalComplexity": "Advanced"
+  },
+  {
+    "id": "gaming",
+    "name": "Gaming",
+    "description": "Video games, game engines, interactive experiences",
+    "commonProjects": ["2D/3D games", "Game servers", "Leaderboards"],
+    "aiCapability": "Medium",
+    "typicalComplexity": "Advanced"
+  },
+  {
+    "id": "ai-ml",
+    "name": "AI/ML",
+    "description": "Machine learning, data science, AI applications",
+    "commonProjects": ["Prediction models", "NLP systems", "Computer vision"],
+    "aiCapability": "High",
+    "typicalComplexity": "Advanced"
+  },
+  {
+    "id": "cybersecurity",
+    "name": "Cybersecurity",
+    "description": "Network security, vulnerability assessment, encryption",
+    "commonProjects": ["Security scanners", "Encryption tools", "Threat detection"],
+    "aiCapability": "High",
+    "typicalComplexity": "Advanced"
+  },
+  {
+    "id": "blockchain",
+    "name": "Blockchain",
+    "description": "Decentralized applications, smart contracts, crypto",
+    "commonProjects": ["DApps", "Token systems", "Supply chain tracking"],
+    "aiCapability": "Low",
+    "typicalComplexity": "Advanced"
+  }
+]
