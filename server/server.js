@@ -70,9 +70,7 @@ app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 
 // Logging
-if (process.env.NODE_ENV !== 'production') {
-  app.use(morgan('dev'));
-}
+app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 
 // Health check
 app.get('/api/health', (req, res) => {

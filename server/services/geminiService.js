@@ -21,7 +21,7 @@ CRITICAL RULES:
 
 async function generateWithGemini(prompt) {
   const model = genAI.getGenerativeModel({ 
-    model: 'gemini-3.6-flash',
+    model: 'gemini-2.0-flash',
     generationConfig: {
       temperature: 0.7,
       maxOutputTokens: 4000,
@@ -32,10 +32,11 @@ async function generateWithGemini(prompt) {
   const response = result.response;
   const text = response.text();
   
-  // Extract JSON from response
-  const jsonMatch = text.match(/\{[\s\S]*\}/);
+  // Extract JSON from response (handles both object {} and array [] responses)
+  const jsonMatch = text.match(/```json\s*([\s\S]*?)\s*```/) || 
+                    text.match(/(\{[\s\S]*\}|\[[\s\S]*\])/);
   if (jsonMatch) {
-    return JSON.parse(jsonMatch[0]);
+    return JSON.parse(jsonMatch[1] || jsonMatch[0]);
   }
   throw new Error('Invalid JSON response from Gemini');
 }
