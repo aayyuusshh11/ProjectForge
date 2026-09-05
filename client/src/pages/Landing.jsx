@@ -5,15 +5,15 @@ export default function Landing() {
   return (
     <div className="min-h-screen bg-zinc-900 text-white pt-16">
       {/* Hero Section */}
-      <section className="relative px-6 py-20 lg:py-32">
+      <section className="relative px-6 py-12 lg:py-20">
         <div className="max-w-5xl mx-auto">
-          <div className="mb-6">
+          <div className="mb-4">
             <span className="text-xs uppercase tracking-[0.3em] text-zinc-500 font-mono">
               AI-Powered Project Mentor
             </span>
           </div>
           
-          <h1 className="text-5xl lg:text-[6rem] font-bold leading-[0.95] tracking-tight mb-10">
+          <h1 className="text-5xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-tight mb-8">
             <span className="text-white">Stop</span>
             <br />
             <span className="text-zinc-500">guessing.</span>
@@ -21,7 +21,7 @@ export default function Landing() {
             <span className="text-emerald-400">Start building.</span>
           </h1>
 
-          <p className="max-w-xl text-zinc-400 text-lg leading-relaxed mb-12">
+          <p className="max-w-xl text-zinc-400 text-lg leading-relaxed mb-10">
             Transform your skills, interests, and constraints into a practical, 
             development-ready final-year project. No generic ideas. No fluff.
           </p>
@@ -42,9 +42,9 @@ export default function Landing() {
       </section>
 
       {/* How it works */}
-      <section className="px-6 py-24 border-t border-zinc-800">
+      <section className="px-6 py-20 border-t border-zinc-800">
         <div className="max-w-5xl mx-auto">
-          <span className="text-xs uppercase tracking-[0.3em] text-zinc-500 font-mono block mb-16">
+          <span className="text-xs uppercase tracking-[0.3em] text-zinc-500 font-mono block mb-12">
             The Process
           </span>
 
@@ -78,8 +78,8 @@ export default function Landing() {
       </section>
 
       {/* Bottom section */}
-      <section className="px-6 py-24 border-t border-zinc-800">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-start gap-16">
+      <section className="px-6 py-20 border-t border-zinc-800">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
           <div>
             <h2 className="text-4xl font-bold tracking-tight mb-6">
               From uncertainty<br />to actionable plan.
