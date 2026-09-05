@@ -5,7 +5,7 @@ export default function Landing() {
   return (
     <div className="min-h-screen bg-zinc-900 text-white pt-16">
       {/* Hero Section */}
-      <section className="relative px-6 py-32 lg:py-48">
+      <section className="relative px-6 py-20 lg:py-32">
         <div className="max-w-5xl mx-auto">
           <div className="mb-6">
             <span className="text-xs uppercase tracking-[0.3em] text-zinc-500 font-mono">
@@ -13,7 +13,7 @@ export default function Landing() {
             </span>
           </div>
           
-          <h1 className="text-6xl lg:text-[7rem] font-bold leading-[0.9] tracking-tight mb-12">
+          <h1 className="text-5xl lg:text-[6rem] font-bold leading-[0.95] tracking-tight mb-10">
             <span className="text-white">Stop</span>
             <br />
             <span className="text-zinc-500">guessing.</span>
@@ -21,7 +21,7 @@ export default function Landing() {
             <span className="text-emerald-400">Start building.</span>
           </h1>
 
-          <p className="max-w-xl text-zinc-400 text-lg leading-relaxed mb-16">
+          <p className="max-w-xl text-zinc-400 text-lg leading-relaxed mb-12">
             Transform your skills, interests, and constraints into a practical, 
             development-ready final-year project. No generic ideas. No fluff.
           </p>
@@ -42,13 +42,13 @@ export default function Landing() {
       </section>
 
       {/* How it works */}
-      <section className="px-6 py-32 border-t border-zinc-800">
+      <section className="px-6 py-24 border-t border-zinc-800">
         <div className="max-w-5xl mx-auto">
-          <span className="text-xs uppercase tracking-[0.3em] text-zinc-500 font-mono block mb-24">
+          <span className="text-xs uppercase tracking-[0.3em] text-zinc-500 font-mono block mb-16">
             The Process
           </span>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <StepCard 
               number="01"
               icon={<Zap className="w-5 h-5" />}
@@ -78,7 +78,7 @@ export default function Landing() {
       </section>
 
       {/* Bottom section */}
-      <section className="px-6 py-32 border-t border-zinc-800">
+      <section className="px-6 py-24 border-t border-zinc-800">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-start gap-16">
           <div>
             <h2 className="text-4xl font-bold tracking-tight mb-6">
@@ -111,15 +111,15 @@ export default function Landing() {
 
 function StepCard({ number, icon, title, description }) {
   return (
-    <div className="group">
+    <div className="group border border-zinc-800 p-6 hover:border-zinc-700 transition-colors duration-300">
       <div className="flex items-center gap-3 mb-4">
-        <span className="text-xs font-mono text-zinc-500">{number}</span>
+        <span className="text-sm font-mono text-zinc-500">{number}</span>
         <div className="text-zinc-400 group-hover:text-emerald-400 transition-colors duration-300">
           {icon}
         </div>
       </div>
-      <h3 className="text-sm font-medium text-zinc-200 mb-2 tracking-wide">{title}</h3>
-      <p className="text-xs text-zinc-500 leading-relaxed">{description}</p>
+      <h3 className="text-base font-medium text-zinc-200 mb-2 tracking-wide">{title}</h3>
+      <p className="text-sm text-zinc-500 leading-relaxed">{description}</p>
     </div>
   );
 }
